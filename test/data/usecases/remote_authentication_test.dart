@@ -26,11 +26,18 @@ class HttpClientSpy extends Mock implements HttpClient{
 }
 
 void main(){
-    test('Should call HttpClient with corrent values',()async{
 
-      final httpClient = HttpClientSpy();
-      final url = faker.internet.httpsUrl();
-      final sut = RemoteAuthentication(httpClient: httpClient,url:url);
+  RemoteAuthentication sut;
+  HttpClientSpy httpClient;
+  String url;
+
+    setUp((){
+       httpClient = HttpClientSpy();
+       url = faker.internet.httpsUrl();
+       sut = RemoteAuthentication(httpClient: httpClient,url:url);
+    });
+
+    test('Should call HttpClient with corrent values',()async{
 
       await sut.auth();
 
