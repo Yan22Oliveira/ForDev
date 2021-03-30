@@ -18,4 +18,6 @@ class AutheticationParams{
     @required this.secret,
   });
 
+  Map toJson() => {'email':email, 'password': secret};
+
 }
